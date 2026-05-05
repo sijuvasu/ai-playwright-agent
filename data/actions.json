@@ -22,5 +22,29 @@
   {
     "type": "click",
     "selector": "first_link"
+  },
+  {
+    "type": "goto",
+    "url": "https://example.com"
+  },
+  {
+    "type": "click",
+    "selector": "first_link"
+  },
+  {
+    "type": "goto",
+    "url": "https://example.com"
+  },
+  {
+    "type": "click",
+    "selector": "first_link"
+  },
+  {
+    "type": "goto",
+    "url": "https://example.com"
+  },
+  {
+    "type": "click",
+    "selector": "first_link"
   }
 ]

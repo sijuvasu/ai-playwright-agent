@@ -26,8 +26,11 @@ test('generated test', async ({ page }) => {
     }
 
     if (action.type === 'click') {
-      // For now basic (we'll improve later)
-      script += `  await page.getByRole('link').first().click();\n`;
+      if (action.role && action.text) {
+        script += `  await page.getByRole('${action.role}', { name: '${action.text}' }).click();\n`;
+      } else {
+        script += `  await page.locator('${action.selector || 'UNKNOWN'}').click();\n`;
+      }
     }
 
   });
