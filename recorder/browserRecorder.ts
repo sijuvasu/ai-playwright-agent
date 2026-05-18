@@ -41,14 +41,19 @@ const actions: any[] = [];
         '';
 
       // Build simple selector
-      let selector = target.tagName.toLowerCase();
+      let selector = '';
 
       if (target.id) {
-        selector += `#${target.id}`;
+        selector = `#${target.id}`;
       }
-
-      if (target.className && typeof target.className === 'string') {
-        selector += `.${target.className.split(' ').join('.')}`;
+      else if (target.getAttribute('name')) {
+        selector = `[name="${target.getAttribute('name')}"]`;
+      }
+      else if (target.innerText) {
+        selector = `text=${target.innerText.trim()}`;
+      }
+      else {
+        selector = target.tagName.toLowerCase();
       }
 
       // @ts-ignore

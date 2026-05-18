@@ -3,21 +3,28 @@
     "type": "click",
     "tag": "A",
     "text": "RFC 2606",
-    "selector": "a",
+    "selector": "text=RFC 2606",
     "url": "https://www.iana.org/help/example-domains"
   },
   {
     "type": "click",
     "tag": "A",
     "text": "RFC 1034",
-    "selector": "a",
+    "selector": "text=RFC 1034",
     "url": "https://datatracker.ietf.org/doc/html/rfc2606"
   },
   {
     "type": "click",
     "tag": "A",
-    "text": "882",
-    "selector": "a",
+    "text": "RFC-1035",
+    "selector": "text=RFC-1035",
     "url": "https://datatracker.ietf.org/doc/html/rfc1034"
+  },
+  {
+    "type": "click",
+    "tag": "A",
+    "text": "882",
+    "selector": "text=882",
+    "url": "https://datatracker.ietf.org/doc/html/rfc1035"
   }
 ]
