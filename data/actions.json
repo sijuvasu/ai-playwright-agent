@@ -1,30 +1,102 @@
 [
   {
     "type": "click",
-    "tag": "A",
-    "text": "RFC 2606",
-    "selector": "text=RFC 2606",
-    "url": "https://www.iana.org/help/example-domains"
+    "tag": "INPUT",
+    "text": "",
+    "selector": "#user-name",
+    "url": "https://www.saucedemo.com/"
+  },
+  {
+    "type": "fill",
+    "selector": "#user-name",
+    "value": "standard_user",
+    "url": "https://www.saucedemo.com/"
   },
   {
     "type": "click",
-    "tag": "A",
-    "text": "RFC 1034",
-    "selector": "text=RFC 1034",
-    "url": "https://datatracker.ietf.org/doc/html/rfc2606"
+    "tag": "INPUT",
+    "text": "",
+    "selector": "#password",
+    "url": "https://www.saucedemo.com/"
+  },
+  {
+    "type": "fill",
+    "selector": "#password",
+    "value": "secret_sauce",
+    "url": "https://www.saucedemo.com/"
   },
   {
     "type": "click",
-    "tag": "A",
-    "text": "RFC-1035",
-    "selector": "text=RFC-1035",
-    "url": "https://datatracker.ietf.org/doc/html/rfc1034"
+    "tag": "INPUT",
+    "text": "",
+    "selector": "#login-button",
+    "url": "https://www.saucedemo.com/"
   },
   {
     "type": "click",
-    "tag": "A",
-    "text": "882",
-    "selector": "text=882",
-    "url": "https://datatracker.ietf.org/doc/html/rfc1035"
+    "tag": "BUTTON",
+    "text": "Add to cart",
+    "selector": "#add-to-cart-sauce-labs-backpack",
+    "url": "https://www.saucedemo.com/inventory.html"
+  },
+  {
+    "type": "click",
+    "tag": "BUTTON",
+    "text": "Checkout",
+    "selector": "#checkout",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "click",
+    "tag": "INPUT",
+    "text": "",
+    "selector": "#first-name",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "fill",
+    "selector": "#first-name",
+    "value": "testuser",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "click",
+    "tag": "INPUT",
+    "text": "",
+    "selector": "#last-name",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "fill",
+    "selector": "#last-name",
+    "value": "lastyuser",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "click",
+    "tag": "INPUT",
+    "text": "",
+    "selector": "#postal-code",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "fill",
+    "selector": "#postal-code",
+    "value": "123456",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "click",
+    "tag": "INPUT",
+    "text": "",
+    "selector": "#continue",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "click",
+    "tag": "BUTTON",
+    "text": "Cancel",
+    "selector": "#cancel",
+    "url": "https://www.saucedemo.com/inventory.html"
   }
 ]
