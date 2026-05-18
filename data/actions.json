@@ -41,6 +41,13 @@
   },
   {
     "type": "click",
+    "tag": "A",
+    "text": "1",
+    "selector": "text=1",
+    "url": "https://www.saucedemo.com/cart.html"
+  },
+  {
+    "type": "click",
     "tag": "BUTTON",
     "text": "Checkout",
     "selector": "#checkout",
@@ -56,7 +63,7 @@
   {
     "type": "fill",
     "selector": "#first-name",
-    "value": "testuser",
+    "value": "firstname",
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
   {
@@ -69,7 +76,14 @@
   {
     "type": "fill",
     "selector": "#last-name",
-    "value": "lastyuser",
+    "value": "lastname",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  {
+    "type": "click",
+    "tag": "INPUT",
+    "text": "",
+    "selector": "#postal-code",
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
   {

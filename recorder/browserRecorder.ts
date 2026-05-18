@@ -48,7 +48,10 @@ const inputTimers = new Map();
     // CLICK recorder
     document.addEventListener('click', (e: any) => {
 
-      const target = e.target as HTMLElement;
+      let target = e.target as HTMLElement;
+      target =
+        target.closest('button, a, input, [role="button"]')
+        || target;
 
       const text =
         target.innerText ||
