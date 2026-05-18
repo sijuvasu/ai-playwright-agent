@@ -1,35 +1,32 @@
 
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import actions from '../data/actions.json';
+import {
+  smartClick,
+  smartFill
+} from '../engine/replayEngine';
 
 test('generated flow', async ({ page }) => {
+
+
   await page.goto('https://www.saucedemo.com/');
-  await page.locator('#user-name').click();
+  await smartFill(page, {"type":"fill","selector":"[data-test=\"username\"]","value":"standard_user","url":"https://www.saucedemo.com/"});  await smartFill(page, {"type":"fill","selector":"[data-test=\"password\"]","value":"secret_sauce","url":"https://www.saucedemo.com/"});
+  await smartClick(page, {"type":"click","tag":"INPUT","text":"","selector":"[data-test=\"login-button\"]","selectors":[{"value":"[data-test=\"login-button\"]","type":"data-test","unique":true,"score":10},{"value":"#login-button","type":"id","unique":true,"score":9},{"value":"[name=\"login-button\"]","type":"name","unique":true,"score":8}],"url":"https://www.saucedemo.com/"});
   await page.waitForLoadState('networkidle');
-  await page.locator('#user-name').fill('standard_user');
-  await page.locator('#password').click();
+
+  await smartClick(page, {"type":"click","tag":"BUTTON","text":"Add to cart","selector":"[data-test=\"add-to-cart-sauce-labs-backpack\"]","selectors":[{"value":"[data-test=\"add-to-cart-sauce-labs-backpack\"]","type":"data-test","unique":false,"score":10},{"value":"#add-to-cart-sauce-labs-backpack","type":"id","unique":false,"score":9},{"value":"[name=\"add-to-cart-sauce-labs-backpack\"]","type":"name","unique":false,"score":8},{"value":"text=Add to cart","type":"text","unique":false,"score":4}],"url":"https://www.saucedemo.com/inventory.html"});
   await page.waitForLoadState('networkidle');
-  await page.locator('#password').fill('secret_sauce');
-  await page.locator('#login-button').click();
+
+  await smartClick(page, {"type":"click","tag":"A","text":"1","selector":"[data-test=\"shopping-cart-link\"]","selectors":[{"value":"[data-test=\"shopping-cart-link\"]","type":"data-test","unique":true,"score":10}],"url":"https://www.saucedemo.com/cart.html"});
   await page.waitForLoadState('networkidle');
-  await page.locator('#add-to-cart-sauce-labs-backpack').click();
+
+  await smartClick(page, {"type":"click","tag":"BUTTON","text":"Checkout","selector":"[data-test=\"checkout\"]","selectors":[{"value":"[data-test=\"checkout\"]","type":"data-test","unique":false,"score":10},{"value":"#checkout","type":"id","unique":false,"score":9},{"value":"[name=\"checkout\"]","type":"name","unique":false,"score":8},{"value":"text=Checkout","type":"text","unique":false,"score":4}],"url":"https://www.saucedemo.com/checkout-step-one.html"});
   await page.waitForLoadState('networkidle');
-  await page.locator('text=1').click();
+  await smartFill(page, {"type":"fill","selector":"[data-test=\"firstName1\"]","value":"firstname","url":"https://www.saucedemo.com/checkout-step-one.html"});  await smartFill(page, {"type":"fill","selector":"[data-test=\"lastName\"]","value":"lastname","url":"https://www.saucedemo.com/checkout-step-one.html"});  await smartFill(page, {"type":"fill","selector":"[data-test=\"postalCode\"]","value":"123456","url":"https://www.saucedemo.com/checkout-step-one.html"});
+  await smartClick(page, {"type":"click","tag":"INPUT","text":"","selector":"[data-test=\"continue\"]","selectors":[{"value":"[data-test=\"continue\"]","type":"data-test","unique":true,"score":10},{"value":"#continue","type":"id","unique":true,"score":9},{"value":"[name=\"continue\"]","type":"name","unique":true,"score":8}],"url":"https://www.saucedemo.com/checkout-step-one.html"});
   await page.waitForLoadState('networkidle');
-  await page.locator('#checkout').click();
+
+  await smartClick(page, {"type":"click","tag":"BUTTON","text":"Cancel","selector":"[data-test=\"cancel\"]","selectors":[{"value":"[data-test=\"cancel\"]","type":"data-test","unique":false,"score":10},{"value":"#cancel","type":"id","unique":false,"score":9},{"value":"[name=\"cancel\"]","type":"name","unique":false,"score":8},{"value":"text=Cancel","type":"text","unique":false,"score":4}],"url":"https://www.saucedemo.com/inventory.html"});
   await page.waitForLoadState('networkidle');
-  await page.locator('#first-name').click();
-  await page.waitForLoadState('networkidle');
-  await page.locator('#first-name').fill('firstname');
-  await page.locator('#last-name').click();
-  await page.waitForLoadState('networkidle');
-  await page.locator('#last-name').fill('lastname');
-  await page.locator('#postal-code').click();
-  await page.waitForLoadState('networkidle');
-  await page.locator('#postal-code').click();
-  await page.waitForLoadState('networkidle');
-  await page.locator('#postal-code').fill('123456');
-  await page.locator('#continue').click();
-  await page.waitForLoadState('networkidle');
-  await page.locator('#cancel').click();
-  await page.waitForLoadState('networkidle');
+
 });

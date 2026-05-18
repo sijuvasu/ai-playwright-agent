@@ -2,10 +2,8 @@ import { chromium } from '@playwright/test';
 import * as fs from 'fs';
 
 const actions: any[] = [];
-const inputTimers = new Map();
 
 (async () => {
-
 
   // 🚀 Launch browser
   const browser = await chromium.launch({
@@ -14,10 +12,12 @@ const inputTimers = new Map();
 
   const page = await browser.newPage();
 
-  // 🔥 Inject recorder BEFORE page load
+  // 🔥 Recorder bridge
   await page.exposeFunction('recordEvent', (event: any) => {
+
     console.log('Captured:', event);
 
+    // ✅ Merge fill events
     if (event.type === 'fill') {
 
       const existingIndex = actions.findIndex(
@@ -40,15 +40,112 @@ const inputTimers = new Map();
       './data/actions.json',
       JSON.stringify(actions, null, 2)
     );
+
   });
 
-  // 🧠 Inject listeners
+  // 🧠 Inject recorder BEFORE page loads
   await page.addInitScript(() => {
 
-    // CLICK recorder
+    // 🔥 Build selector candidates
+    function buildSelectorCandidates(target: HTMLElement) {
+
+      const selectors = [];
+
+      // 1️⃣ data-test
+      const dataTest = target.getAttribute('data-test');
+
+      if (dataTest) {
+
+        const selector = `[data-test="${dataTest}"]`;
+
+        selectors.push({
+          value: selector,
+          type: 'data-test',
+          unique: document.querySelectorAll(selector).length === 1,
+          score: 10
+        });
+
+      }
+
+      // 2️⃣ id
+      if (target.id) {
+
+        const selector = `#${target.id}`;
+
+        selectors.push({
+          value: selector,
+          type: 'id',
+          unique: document.querySelectorAll(selector).length === 1,
+          score: 9
+        });
+
+      }
+
+      // 3️⃣ name
+      const name = target.getAttribute('name');
+
+      if (name) {
+
+        const selector = `[name="${name}"]`;
+
+        selectors.push({
+          value: selector,
+          type: 'name',
+          unique: document.querySelectorAll(selector).length === 1,
+          score: 8
+        });
+
+      }
+
+      // 4️⃣ aria-label
+      const aria = target.getAttribute('aria-label');
+
+      if (aria) {
+
+        const selector = `[aria-label="${aria}"]`;
+
+        selectors.push({
+          value: selector,
+          type: 'aria-label',
+          unique: document.querySelectorAll(selector).length === 1,
+          score: 7
+        });
+
+      }
+
+      // 5️⃣ text
+      const text =
+        target.innerText ||
+        target.textContent;
+
+      if (
+        text &&
+        text.trim().length > 2
+      ) {
+
+        const cleanText = text.trim();
+
+        selectors.push({
+          value: `text=${cleanText}`,
+          type: 'text',
+          unique: false,
+          score: 4
+        });
+
+      }
+
+      // Sort best first
+      selectors.sort((a, b) => b.score - a.score);
+
+      return selectors;
+    }
+
+    // 🔥 CLICK recorder
     document.addEventListener('click', (e: any) => {
 
       let target = e.target as HTMLElement;
+
+      // Find meaningful clickable parent
       target =
         target.closest('button, a, input, [role="button"]')
         || target;
@@ -58,41 +155,28 @@ const inputTimers = new Map();
         target.textContent ||
         '';
 
-      // Build selector
-      let selector = '';
+      // 🔥 Generate selector candidates
+      const selectors =
+        buildSelectorCandidates(target);
 
-      if (target.id) {
-        selector = `#${target.id}`;
-      }
-      else if (target.getAttribute('name')) {
-        selector = `[name="${target.getAttribute('name')}"]`;
-      }
-      else if (target.innerText) {
-        selector = `text=${target.innerText.trim()}`;
-      }
-      else {
-        selector = target.tagName.toLowerCase();
-      }
-
-      if (
-        target.tagName === 'DIV' ||
-        target.tagName === 'SPAN'
-      ) {
-        return;
-      }
+      // ✅ Choose best UNIQUE selector
+      const bestSelector =
+        selectors.find((s) => s.unique)
+        || selectors[0];
 
       // @ts-ignore
       window.recordEvent({
         type: 'click',
         tag: target.tagName,
         text: text.trim(),
-        selector,
+        selector: bestSelector?.value || '',
+        selectors,
         url: window.location.href
       });
 
     });
 
-    // INPUT recorder
+    // 🔥 INPUT recorder
     document.addEventListener('input', (e: any) => {
 
       const target = e.target as HTMLInputElement;
@@ -101,18 +185,29 @@ const inputTimers = new Map();
 
       const tag = target.tagName.toLowerCase();
 
-      if (tag !== 'input' && tag !== 'textarea') return;
+      if (
+        tag !== 'input' &&
+        tag !== 'textarea'
+      ) return;
 
       let selector = '';
 
-      if (target.id) {
+      // Better selector priority
+      const dataTest =
+        target.getAttribute('data-test');
+
+      if (dataTest) {
+        selector = `[data-test="${dataTest}"]`;
+      }
+      else if (target.id) {
         selector = `#${target.id}`;
       }
       else if (target.name) {
         selector = `[name="${target.name}"]`;
       }
       else if (target.placeholder) {
-        selector = `[placeholder="${target.placeholder}"]`;
+        selector =
+          `[placeholder="${target.placeholder}"]`;
       }
       else {
         selector = tag;
@@ -138,7 +233,7 @@ const inputTimers = new Map();
 
   });
 
-  // 🌐 Navigate AFTER injection
+  // 🌐 Open app AFTER recorder injection
   await page.goto('https://www.saucedemo.com/');
 
   console.log('🎥 Recorder started...');

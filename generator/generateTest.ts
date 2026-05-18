@@ -3,40 +3,78 @@ import * as fs from 'fs';
 const actionsFile = './data/actions.json';
 const outputFile = './tests/generated.spec.ts';
 
+// Read recorded actions
 const actions = JSON.parse(
-    fs.readFileSync(actionsFile, 'utf-8')
+  fs.readFileSync(actionsFile, 'utf-8')
 );
 
+// Generate Playwright test
 let script = `
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import actions from '../data/actions.json';
+import {
+  smartClick,
+  smartFill
+} from '../engine/replayEngine';
 
 test('generated flow', async ({ page }) => {
+
 `;
 
-const visitedUrls = new Set();
 
+// 🚀 Navigate only ONCE
 if (actions.length > 0) {
-    script += `  await page.goto('${actions[0].url}');\n`;
+
+  script += `
+  await page.goto('${actions[0].url}');
+`;
+
 }
 
+
+// 🔥 Generate replay flow
 actions.forEach((action: any) => {
 
-    // 🔥 Handle fill
-    if (action.type === 'fill') {
-        script += `  await page.locator('${action.selector}').fill('${action.value}');\n`;
-    }
+  // ✅ Ignore useless input clicks
+  if (
+    action.type === 'click' &&
+    action.selector &&
+    actions.some(
+      (a: any) =>
+        a.type === 'fill' &&
+        a.selector === action.selector
+    )
+  ) {
+    return;
+  }
 
-    // 🔥 Handle click
-    if (action.type === 'click') {
-        script += `  await page.locator('${action.selector}').click();\n`;
-        script += `  await page.waitForLoadState('networkidle');\n`;
-    }
+  // 🔥 Handle fill
+  if (action.type === 'fill') {
+
+    script += `  await smartFill(page, ${JSON.stringify(action)});`;
+
+  }
+
+  // 🔥 Handle click
+  if (action.type === 'click') {
+
+    script += `
+  await smartClick(page, ${JSON.stringify(action)});
+  await page.waitForLoadState('networkidle');
+`;
+
+  }
 
 });
 
-script += `});
+
+// Close test
+script += `
+});
 `;
 
+
+// Write generated file
 fs.writeFileSync(outputFile, script);
 
 console.log('✅ Generated:', outputFile);

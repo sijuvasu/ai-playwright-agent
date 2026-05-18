@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-05-18T13:29:13.082Z",
+  "action": {
+    "type": "fill",
+    "selector": "[data-test=\"firstName1\"]",
+    "value": "firstname",
+    "url": "https://www.saucedemo.com/checkout-step-one.html"
+  },
+  "diagnostics": [
+    {
+      "selector": "[data-test=\"firstName1\"]",
+      "reason": "Expected 1 element, found 0"
+    }
+  ]
+}

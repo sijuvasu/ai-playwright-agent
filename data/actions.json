@@ -3,12 +3,32 @@
     "type": "click",
     "tag": "INPUT",
     "text": "",
-    "selector": "#user-name",
+    "selector": "[data-test=\"username\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"username\"]",
+        "type": "data-test",
+        "unique": true,
+        "score": 10
+      },
+      {
+        "value": "#user-name",
+        "type": "id",
+        "unique": true,
+        "score": 9
+      },
+      {
+        "value": "[name=\"user-name\"]",
+        "type": "name",
+        "unique": true,
+        "score": 8
+      }
+    ],
     "url": "https://www.saucedemo.com/"
   },
   {
     "type": "fill",
-    "selector": "#user-name",
+    "selector": "[data-test=\"username\"]",
     "value": "standard_user",
     "url": "https://www.saucedemo.com/"
   },
@@ -16,12 +36,32 @@
     "type": "click",
     "tag": "INPUT",
     "text": "",
-    "selector": "#password",
+    "selector": "[data-test=\"password\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"password\"]",
+        "type": "data-test",
+        "unique": true,
+        "score": 10
+      },
+      {
+        "value": "#password",
+        "type": "id",
+        "unique": true,
+        "score": 9
+      },
+      {
+        "value": "[name=\"password\"]",
+        "type": "name",
+        "unique": true,
+        "score": 8
+      }
+    ],
     "url": "https://www.saucedemo.com/"
   },
   {
     "type": "fill",
-    "selector": "#password",
+    "selector": "[data-test=\"password\"]",
     "value": "secret_sauce",
     "url": "https://www.saucedemo.com/"
   },
@@ -29,40 +69,140 @@
     "type": "click",
     "tag": "INPUT",
     "text": "",
-    "selector": "#login-button",
+    "selector": "[data-test=\"login-button\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"login-button\"]",
+        "type": "data-test",
+        "unique": true,
+        "score": 10
+      },
+      {
+        "value": "#login-button",
+        "type": "id",
+        "unique": true,
+        "score": 9
+      },
+      {
+        "value": "[name=\"login-button\"]",
+        "type": "name",
+        "unique": true,
+        "score": 8
+      }
+    ],
     "url": "https://www.saucedemo.com/"
   },
   {
     "type": "click",
     "tag": "BUTTON",
     "text": "Add to cart",
-    "selector": "#add-to-cart-sauce-labs-backpack",
+    "selector": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+        "type": "data-test",
+        "unique": false,
+        "score": 10
+      },
+      {
+        "value": "#add-to-cart-sauce-labs-backpack",
+        "type": "id",
+        "unique": false,
+        "score": 9
+      },
+      {
+        "value": "[name=\"add-to-cart-sauce-labs-backpack\"]",
+        "type": "name",
+        "unique": false,
+        "score": 8
+      },
+      {
+        "value": "text=Add to cart",
+        "type": "text",
+        "unique": false,
+        "score": 4
+      }
+    ],
     "url": "https://www.saucedemo.com/inventory.html"
   },
   {
     "type": "click",
     "tag": "A",
     "text": "1",
-    "selector": "text=1",
+    "selector": "[data-test=\"shopping-cart-link\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"shopping-cart-link\"]",
+        "type": "data-test",
+        "unique": true,
+        "score": 10
+      }
+    ],
     "url": "https://www.saucedemo.com/cart.html"
   },
   {
     "type": "click",
     "tag": "BUTTON",
     "text": "Checkout",
-    "selector": "#checkout",
+    "selector": "[data-test=\"checkout\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"checkout\"]",
+        "type": "data-test",
+        "unique": false,
+        "score": 10
+      },
+      {
+        "value": "#checkout",
+        "type": "id",
+        "unique": false,
+        "score": 9
+      },
+      {
+        "value": "[name=\"checkout\"]",
+        "type": "name",
+        "unique": false,
+        "score": 8
+      },
+      {
+        "value": "text=Checkout",
+        "type": "text",
+        "unique": false,
+        "score": 4
+      }
+    ],
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
   {
     "type": "click",
     "tag": "INPUT",
     "text": "",
-    "selector": "#first-name",
+    "selector": "[data-test=\"firstName\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"firstName\"]",
+        "type": "data-test",
+        "unique": true,
+        "score": 10
+      },
+      {
+        "value": "#first-name",
+        "type": "id",
+        "unique": true,
+        "score": 9
+      },
+      {
+        "value": "[name=\"firstName\"]",
+        "type": "name",
+        "unique": true,
+        "score": 8
+      }
+    ],
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
   {
     "type": "fill",
-    "selector": "#first-name",
+    "selector": "[data-test=\"firstName\"]",
     "value": "firstname",
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
@@ -70,12 +210,32 @@
     "type": "click",
     "tag": "INPUT",
     "text": "",
-    "selector": "#last-name",
+    "selector": "[data-test=\"lastName\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"lastName\"]",
+        "type": "data-test",
+        "unique": true,
+        "score": 10
+      },
+      {
+        "value": "#last-name",
+        "type": "id",
+        "unique": true,
+        "score": 9
+      },
+      {
+        "value": "[name=\"lastName\"]",
+        "type": "name",
+        "unique": true,
+        "score": 8
+      }
+    ],
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
   {
     "type": "fill",
-    "selector": "#last-name",
+    "selector": "[data-test=\"lastName\"]",
     "value": "lastname",
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
@@ -83,19 +243,32 @@
     "type": "click",
     "tag": "INPUT",
     "text": "",
-    "selector": "#postal-code",
-    "url": "https://www.saucedemo.com/checkout-step-one.html"
-  },
-  {
-    "type": "click",
-    "tag": "INPUT",
-    "text": "",
-    "selector": "#postal-code",
+    "selector": "[data-test=\"postalCode\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"postalCode\"]",
+        "type": "data-test",
+        "unique": true,
+        "score": 10
+      },
+      {
+        "value": "#postal-code",
+        "type": "id",
+        "unique": true,
+        "score": 9
+      },
+      {
+        "value": "[name=\"postalCode\"]",
+        "type": "name",
+        "unique": true,
+        "score": 8
+      }
+    ],
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
   {
     "type": "fill",
-    "selector": "#postal-code",
+    "selector": "[data-test=\"postalCode\"]",
     "value": "123456",
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
@@ -103,14 +276,60 @@
     "type": "click",
     "tag": "INPUT",
     "text": "",
-    "selector": "#continue",
+    "selector": "[data-test=\"continue\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"continue\"]",
+        "type": "data-test",
+        "unique": true,
+        "score": 10
+      },
+      {
+        "value": "#continue",
+        "type": "id",
+        "unique": true,
+        "score": 9
+      },
+      {
+        "value": "[name=\"continue\"]",
+        "type": "name",
+        "unique": true,
+        "score": 8
+      }
+    ],
     "url": "https://www.saucedemo.com/checkout-step-one.html"
   },
   {
     "type": "click",
     "tag": "BUTTON",
     "text": "Cancel",
-    "selector": "#cancel",
+    "selector": "[data-test=\"cancel\"]",
+    "selectors": [
+      {
+        "value": "[data-test=\"cancel\"]",
+        "type": "data-test",
+        "unique": false,
+        "score": 10
+      },
+      {
+        "value": "#cancel",
+        "type": "id",
+        "unique": false,
+        "score": 9
+      },
+      {
+        "value": "[name=\"cancel\"]",
+        "type": "name",
+        "unique": false,
+        "score": 8
+      },
+      {
+        "value": "text=Cancel",
+        "type": "text",
+        "unique": false,
+        "score": 4
+      }
+    ],
     "url": "https://www.saucedemo.com/inventory.html"
   }
 ]
