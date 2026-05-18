@@ -14,3 +14,7 @@ export function recordAction(action: any) {
 
   fs.writeFileSync(filePath, JSON.stringify(actions, null, 2));
 }
+
+export function clearActions() {
+  fs.writeFileSync('./data/actions.json', '[]');
+}

@@ -1,50 +1,23 @@
 [
   {
-    "type": "goto",
-    "url": "https://example.com"
+    "type": "click",
+    "tag": "A",
+    "text": "RFC 2606",
+    "selector": "a",
+    "url": "https://www.iana.org/help/example-domains"
   },
   {
     "type": "click",
-    "selector": "first_link"
-  },
-  {
-    "type": "goto",
-    "url": "https://example.com"
-  },
-  {
-    "type": "click",
-    "selector": "first_link"
-  },
-  {
-    "type": "goto",
-    "url": "https://example.com"
+    "tag": "A",
+    "text": "RFC 1034",
+    "selector": "a",
+    "url": "https://datatracker.ietf.org/doc/html/rfc2606"
   },
   {
     "type": "click",
-    "selector": "first_link"
-  },
-  {
-    "type": "goto",
-    "url": "https://example.com"
-  },
-  {
-    "type": "click",
-    "selector": "first_link"
-  },
-  {
-    "type": "goto",
-    "url": "https://example.com"
-  },
-  {
-    "type": "click",
-    "selector": "first_link"
-  },
-  {
-    "type": "goto",
-    "url": "https://example.com"
-  },
-  {
-    "type": "click",
-    "selector": "first_link"
+    "tag": "A",
+    "text": "882",
+    "selector": "a",
+    "url": "https://datatracker.ietf.org/doc/html/rfc1034"
   }
 ]
